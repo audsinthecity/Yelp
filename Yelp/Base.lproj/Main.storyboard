@@ -28,9 +28,12 @@
                                             <frame key="frameInset" width="375" height="92"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WS3-3Z-FJE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WS3-3Z-FJE">
                                                     <frame key="frameInset" minX="15" width="65" height="65"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="65" id="QRY-9V-5jq"/>
+                                                        <constraint firstAttribute="width" constant="65" id="erJ-Re-FwC"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E8h-ce-p7o">
                                                     <frame key="frameInset" minX="88" minY="23" width="83" height="15"/>
@@ -79,6 +82,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WS3-3Z-FJE" firstAttribute="top" secondItem="x1v-I3-zgN" secondAttribute="top" constant="8" id="7dJ-77-tcO"/>
+                                                <constraint firstItem="WS3-3Z-FJE" firstAttribute="leading" secondItem="x1v-I3-zgN" secondAttribute="leading" constant="8" id="etC-YQ-bWr"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WS3-3Z-FJE" secondAttribute="bottom" constant="12" id="f9s-Ay-EhQ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="SUe-7V-Dsl" id="dKv-k0-zW5"/>

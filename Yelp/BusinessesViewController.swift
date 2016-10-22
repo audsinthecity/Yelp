@@ -37,6 +37,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             }
         )
         
+        tableView.reloadData()
+        
         }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

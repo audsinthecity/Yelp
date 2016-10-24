@@ -8,9 +8,10 @@
 
 import UIKit
 
-class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
+class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate, UISearchBarDelegate {
     
     var businesses: [Business]!
+    var filteredBusinesses: [Business]!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,12 +22,17 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        navigationItem.titleView = UISearchBar()
+        
+        let yelpSearchBar = UISearchBar()
+        yelpSearchBar.sizeToFit()
+        navigationItem.titleView = yelpSearchBar
         navigationController?.navigationBar.barTintColor = UIColor.red
+        yelpSearchBar.delegate = self
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
             self.businesses = businesses
+            self.filteredBusinesses = businesses
             self.tableView.reloadData()
             if let businesses = businesses {
                 for business in businesses {
@@ -58,6 +64,16 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
         return cell
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        Business.searchWithTerm(term: searchText, sort: nil, categories: nil, deals: nil) {(businesses: [Business]?, error: Error?) -> Void in
+            self.businesses = businesses
+            self.tableView.reloadData()
+        }
+    }
+    
+    
+    
     
     
         
@@ -94,5 +110,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.reloadData()
             }
     }
+    
+
     
 }

@@ -10,6 +10,8 @@ import UIKit
 
 @objc protocol SwitchCellDelegate {
     @objc optional func switchCell(switchCell: SwitchCell, didChangeValue value:Bool)
+    @objc optional func switchCategoryCell(switchCategoryCell: SwitchCell, didChangeValue value:Bool)
+    @objc optional func switchDealCell(switchDealCell: SwitchCell, didChangeValue value:Bool)
 }
 
 class SwitchCell: UITableViewCell {
@@ -33,6 +35,8 @@ class SwitchCell: UITableViewCell {
     
     func switchValueChanged() {
         delegate?.switchCell?(switchCell: self, didChangeValue: onSwitch.isOn)
+        delegate?.switchDealCell?(switchDealCell: self, didChangeValue: onSwitch.isOn)
+        delegate?.switchCategoryCell?(switchCategoryCell: self, didChangeValue: onSwitch.isOn)
     }
 
 }

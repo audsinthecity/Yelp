@@ -76,7 +76,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         var filters = [String: AnyObject]()
         
         var selectedCategories = [String]()
-        var selectedDeals = [String]()
+        var selectedDistance = String()
         
         
         for (row,isSelected) in switchStates {
@@ -87,6 +87,10 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         if selectedCategories.count > 0 {
             filters["categories"] = selectedCategories as AnyObject?
         }
+        
+        filters["deals"] = dealSwitch as AnyObject?
+        
+        filters["sort"] = sortSelected as AnyObject?
         
         delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filters)
  
@@ -155,10 +159,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         if indexPath.section == 0 {
             dealSwitch = value
         } else {
-        //switchStates[0]?indexPath.row] = value
         switchStates[indexPath.row] = value
-        //switchStates[2]?[indexPath.row] = value
-        //switchStates[3]?[indexPath.row] = value
         print("got switchCell change")
         print(switchStates[indexPath.row])
         print(value)
@@ -169,12 +170,22 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         let indexPath = tableView.indexPath(for: radioCell)!
         if indexPath.section == 1 {
             //update distance state
+            for (index, _) in distanceSwitchStates.enumerated() {
+                distanceSwitchStates[index] = false
+            }
             distanceSwitchStates[indexPath.row] = value
             distanceSelected = indexPath.row
+            print("distance selected")
+            print(distanceSelected)
+            tableView.reloadSections([indexPath.section], with: .fade)
         } else {
             //update sort state
+            for (index, _) in sortSwitchStates.enumerated() {
+                sortSwitchStates[index] = false
+            }
             sortSwitchStates[indexPath.row] = value
             sortSelected = indexPath.row
+            tableView.reloadSections([indexPath.section], with: .fade)
         }
         //radioStates[indexPath.row] = value
         print("got radio switch change")
@@ -210,9 +221,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func yelpSort() -> [[String:String]] {
-        return [["sort" : "Best Match", "code": "match"],
-                ["sort" : "Distance", "code": "distance"],
-                ["sort" : "Highly Rated", "code": "rating"]]
+        return [["sort" : "Best Match", "code": "0"],
+                ["sort" : "Distance", "code": "1"],
+                ["sort" : "Highly Rated", "code": "2"]]
     }
     
     func yelpCategories() -> [[String:String]] {

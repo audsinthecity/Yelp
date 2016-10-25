@@ -41,6 +41,9 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     //var categorySwitchStates = [Int:Bool]()
     var distanceSwitchStates = [Int:Bool]()
     var sortSwitchStates = [Int:Bool]()
+    
+    var sortSelected : Int = 0
+    var distanceSelected : Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +78,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         var selectedCategories = [String]()
         var selectedDeals = [String]()
         
-        /*
+        
         for (row,isSelected) in switchStates {
             if isSelected {
                 selectedCategories.append(categories[row]["code"]!)
@@ -86,7 +89,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
         delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filters)
- */
+ 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -119,19 +122,20 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             print(dealSwitch)
             return cell
         } else if section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
-            cell.switchLabel.text = distance[indexPath.row]["distance"]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RadioCell", for: indexPath) as! RadioCell
+            cell.radioLabel.text = distance[indexPath.row]["distance"]
             cell.delegate = self
-            cell.onSwitch.isOn = distanceSwitchStates[indexPath.row] ?? false
-            print("section 1")
-            //print(distanceSwitchStates[indexPath.row])
+            cell.onRadioSwitch.isOn = distanceSwitchStates[indexPath.row] ?? false
+            //distanceSelected = indexPath.row
+            print("section 1 - distance")
+            //print(distanceSelected)
             return cell
         } else if section == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
-            cell.switchLabel.text = sort[indexPath.row]["sort"]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RadioCell", for: indexPath) as! RadioCell
+            cell.radioLabel.text = sort[indexPath.row]["sort"]
             cell.delegate = self
-            cell.onSwitch.isOn = sortSwitchStates[indexPath.row] ?? false
-            print("section 2")
+            cell.onRadioSwitch.isOn = sortSwitchStates[indexPath.row] ?? false
+            print("section 2 - sort")
             //print(sortSwitchStates[indexPath.row])
             return cell
         } else {
@@ -161,10 +165,20 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    func radioSwitchCell(radioSwitchCell: RadioCell, didChangeValue value: Bool) {
-        let indexPath = tableView.indexPath(for: radioSwitchCell)!
-        radioStates[indexPath.row] = value
+    func radioSwitchCell(radioCell: RadioCell, didChangeValue value: Bool) {
+        let indexPath = tableView.indexPath(for: radioCell)!
+        if indexPath.section == 1 {
+            //update distance state
+            distanceSwitchStates[indexPath.row] = value
+            distanceSelected = indexPath.row
+        } else {
+            //update sort state
+            sortSwitchStates[indexPath.row] = value
+            sortSelected = indexPath.row
+        }
+        //radioStates[indexPath.row] = value
         print("got radio switch change")
+        print(radioStates[indexPath.row])
     }
     
     /* func switchCategoryCell(switchCategoryCell: SwitchCell, didChangeValue value: Bool) {

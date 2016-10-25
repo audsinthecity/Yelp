@@ -182,32 +182,33 @@
                                             <outlet property="switchLabel" destination="arl-FO-21f" id="iDm-mI-4zR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RadioCell" rowHeight="60" id="kcC-1R-LZT" customClass="RadioCell" customModule="Yelp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RadioCell" id="SWW-Rp-XKF" customClass="RadioCell" customModule="Yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="180" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kcC-1R-LZT" id="lbF-d1-biR">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SWW-Rp-XKF" id="6Jt-vK-llj">
                                             <frame key="frameInset" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8b-MQ-gfe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPE-Hm-RYJ">
+                                                    <frame key="frameInset" minX="20" minY="19" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7nY-bO-ScT"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cB-Nd-okF">
+                                                    <frame key="frameInset" minX="318" minY="14" width="51" height="31"/>
+                                                </switch>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7nY-bO-ScT" firstAttribute="centerY" secondItem="lbF-d1-biR" secondAttribute="centerY" id="8A1-z5-Bqa"/>
-                                                <constraint firstItem="u8b-MQ-gfe" firstAttribute="centerY" secondItem="lbF-d1-biR" secondAttribute="centerY" id="bba-52-DLO"/>
-                                                <constraint firstAttribute="trailing" secondItem="7nY-bO-ScT" secondAttribute="trailing" constant="12" id="lIo-W9-npO"/>
-                                                <constraint firstItem="u8b-MQ-gfe" firstAttribute="leading" secondItem="lbF-d1-biR" secondAttribute="leadingMargin" constant="12" id="nNH-S7-gko"/>
+                                                <constraint firstAttribute="trailing" secondItem="0cB-Nd-okF" secondAttribute="trailing" constant="12" id="1tF-RN-z1P"/>
+                                                <constraint firstItem="0cB-Nd-okF" firstAttribute="centerY" secondItem="6Jt-vK-llj" secondAttribute="centerY" id="3KT-k4-y6W"/>
+                                                <constraint firstItem="WPE-Hm-RYJ" firstAttribute="leading" secondItem="6Jt-vK-llj" secondAttribute="leading" constant="12" id="6AB-4x-IvD"/>
+                                                <constraint firstItem="WPE-Hm-RYJ" firstAttribute="centerY" secondItem="6Jt-vK-llj" secondAttribute="centerY" id="GZE-Q6-zF0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="onRadioSwitch" destination="7nY-bO-ScT" id="15C-BU-Saa"/>
-                                            <outlet property="onSwitch" destination="7nY-bO-ScT" id="drn-cp-FPW"/>
-                                            <outlet property="radioLabel" destination="u8b-MQ-gfe" id="cD7-zZ-GNP"/>
-                                            <outlet property="switchLabel" destination="u8b-MQ-gfe" id="3u3-jV-v3G"/>
+                                            <outlet property="onRadioSwitch" destination="0cB-Nd-okF" id="baW-sa-pgc"/>
+                                            <outlet property="radioLabel" destination="WPE-Hm-RYJ" id="OIQ-XF-dmm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

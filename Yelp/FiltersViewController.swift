@@ -19,7 +19,7 @@ enum SectionRowIdentifier : String {
     case Category = "Category"
 }
 
-class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate {
+class FiltersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate, RadioCellDelegate {
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -35,11 +35,12 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     var distance: [[String:String]]!
     var sort: [[String:String]]!
     
-    var switchStates = [Int:[Int:Bool]]()
+    var switchStates = [Int:Bool]()
+    var dealSwitch = Bool()
+    var radioStates = [Int:Bool]()
     //var categorySwitchStates = [Int:Bool]()
-    //var dealSwitchStates = [Int:Bool]()
-    //var distanceSwitchStates = [Int:Bool]()
-    //var sortSwitchStates = [Int:Bool]()
+    var distanceSwitchStates = [Int:Bool]()
+    var sortSwitchStates = [Int:Bool]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,15 +114,15 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
             cell.switchLabel.text = deals[indexPath.row]["name"]
             cell.delegate = self
-            cell.onSwitch.isOn = switchStates[0]?[indexPath.row] ?? false
+            cell.onSwitch.isOn = dealSwitch
             print("section 0")
-            print(switchStates[0]?[indexPath.row])
+            print(dealSwitch)
             return cell
         } else if section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
             cell.switchLabel.text = distance[indexPath.row]["distance"]
             cell.delegate = self
-            cell.onSwitch.isOn = switchStates[1]?[indexPath.row] ?? false
+            cell.onSwitch.isOn = distanceSwitchStates[indexPath.row] ?? false
             print("section 1")
             //print(distanceSwitchStates[indexPath.row])
             return cell
@@ -129,7 +130,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
             cell.switchLabel.text = sort[indexPath.row]["sort"]
             cell.delegate = self
-            cell.onSwitch.isOn = switchStates[2]?[indexPath.row] ?? false
+            cell.onSwitch.isOn = sortSwitchStates[indexPath.row] ?? false
             print("section 2")
             //print(sortSwitchStates[indexPath.row])
             return cell
@@ -137,23 +138,33 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
         cell.switchLabel.text = categories[indexPath.row]["name"]
         cell.delegate = self
-        cell.onSwitch.isOn = switchStates[3]?[indexPath.row] ?? false
+        cell.onSwitch.isOn = switchStates[indexPath.row] ?? false
         print("section 3")
         //print(categorySwitchStates[indexPath.row])
-        print(switchStates[3]?[indexPath.row])
+        print(switchStates[indexPath.row])
         return cell
         }
     }
     
     func switchCell(switchCell: SwitchCell, didChangeValue value: Bool) {
         let indexPath = tableView.indexPath(for: switchCell)!
-        switchStates[0]?indexPath.row] = value
-        switchStates[1]?[indexPath.row] = value
-        switchStates[2]?[indexPath.row] = value
-        switchStates[3]?[indexPath.row] = value
+        if indexPath.section == 0 {
+            dealSwitch = value
+        } else {
+        //switchStates[0]?indexPath.row] = value
+        switchStates[indexPath.row] = value
+        //switchStates[2]?[indexPath.row] = value
+        //switchStates[3]?[indexPath.row] = value
         print("got switchCell change")
-        print(switchStates[0]?[indexPath.row])
+        print(switchStates[indexPath.row])
         print(value)
+        }
+    }
+    
+    func radioSwitchCell(radioSwitchCell: RadioCell, didChangeValue value: Bool) {
+        let indexPath = tableView.indexPath(for: radioSwitchCell)!
+        radioStates[indexPath.row] = value
+        print("got radio switch change")
     }
     
     /* func switchCategoryCell(switchCategoryCell: SwitchCell, didChangeValue value: Bool) {

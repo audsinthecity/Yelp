@@ -182,6 +182,34 @@
                                             <outlet property="switchLabel" destination="arl-FO-21f" id="iDm-mI-4zR"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RadioCell" rowHeight="60" id="kcC-1R-LZT" customClass="RadioCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="180" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kcC-1R-LZT" id="lbF-d1-biR">
+                                            <frame key="frameInset" width="375" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8b-MQ-gfe">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7nY-bO-ScT"/>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7nY-bO-ScT" firstAttribute="centerY" secondItem="lbF-d1-biR" secondAttribute="centerY" id="8A1-z5-Bqa"/>
+                                                <constraint firstItem="u8b-MQ-gfe" firstAttribute="centerY" secondItem="lbF-d1-biR" secondAttribute="centerY" id="bba-52-DLO"/>
+                                                <constraint firstAttribute="trailing" secondItem="7nY-bO-ScT" secondAttribute="trailing" constant="12" id="lIo-W9-npO"/>
+                                                <constraint firstItem="u8b-MQ-gfe" firstAttribute="leading" secondItem="lbF-d1-biR" secondAttribute="leadingMargin" constant="12" id="nNH-S7-gko"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="onRadioSwitch" destination="7nY-bO-ScT" id="15C-BU-Saa"/>
+                                            <outlet property="onSwitch" destination="7nY-bO-ScT" id="drn-cp-FPW"/>
+                                            <outlet property="radioLabel" destination="u8b-MQ-gfe" id="cD7-zZ-GNP"/>
+                                            <outlet property="switchLabel" destination="u8b-MQ-gfe" id="3u3-jV-v3G"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>

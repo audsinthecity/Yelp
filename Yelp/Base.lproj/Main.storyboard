@@ -244,6 +244,41 @@
             </objects>
             <point key="canvasLocation" x="4162" y="358"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="nlz-sI-aD1">
+            <objects>
+                <viewController id="DBO-NE-6J5" customClass="DetailViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xxs-fG-LmM"/>
+                        <viewControllerLayoutGuide type="bottom" id="a1R-lb-Pac"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="78A-qV-rkZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3H-il-lOe">
+                                <frame key="frameInset" width="375" height="447"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmK-Fc-zp6">
+                                <frame key="frameInset" minX="16" minY="469" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="largerImageView" destination="X3H-il-lOe" id="6y5-zi-aqk"/>
+                        <outlet property="nameLabel" destination="QmK-Fc-zp6" id="kPN-oc-73c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f6V-RM-xTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4842.3999999999996" y="356.67166416791605"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="uzV-0g-AVe">
             <objects>

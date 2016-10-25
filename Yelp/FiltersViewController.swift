@@ -76,7 +76,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         var filters = [String: AnyObject]()
         
         var selectedCategories = [String]()
-        var selectedDistance = String()
+        //var selectedDistance = String()
         
         
         for (row,isSelected) in switchStates {

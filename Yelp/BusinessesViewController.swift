@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate, UISearchBarDelegate {
     
@@ -18,6 +19,9 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Display HUD right before the request is made
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -28,6 +32,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         navigationItem.titleView = yelpSearchBar
         navigationController?.navigationBar.barTintColor = UIColor.red
         yelpSearchBar.delegate = self
+        
         
         Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
             
@@ -44,7 +49,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             }
         )
         
+        
+        
         tableView.reloadData()
+        
+        // Hide HUD
+        MBProgressHUD.hide(for: self.view, animated: true)
         
         }
         
